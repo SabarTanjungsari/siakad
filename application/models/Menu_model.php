@@ -4,16 +4,24 @@ class Menu_model extends CI_Model
 {
 	function menus()
 	{
-		$this->db->select("*");
+		$this->db->distinct();
+		$this->db->select("menu.*");
 		$this->db->from("menu");
+		$this->db->join('menuline', 'menuline.menu_id = menu.menu_id');
+		$this->db->join('role_menu', 'role_menu.menuline_id = menuline.menuline_id');
+		$this->db->where('role_id', $this->session->userdata('roleid'));
+		$this->db->order_by('menu.menu_id', 'asc');
 		$q = $this->db->get();
 
 		$final = array();
 		if ($q->num_rows() > 0) {
 			foreach ($q->result() as $row) {
 
+				$this->db->distinct();
 				$this->db->select("*");
 				$this->db->from("menuline");
+				$this->db->join('role_menu', 'role_menu.menuline_id = menuline.menuline_id');
+				$this->db->where('role_id', $this->session->userdata('roleid'));
 				$this->db->where("menu_id", $row->menu_id);
 				$q = $this->db->get();
 				if ($q->num_rows() > 0) {
