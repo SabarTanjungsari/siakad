@@ -1,6 +1,3 @@
-<nav aria-label="breadcrumb">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
-		<li class="breadcrumb-item active" aria-current="page"><i class="fas fa-fw fa-tachometer-alt"></i>Library</li>
-	</ol>
-</nav>
+<div class="container">
+	<h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+</div>

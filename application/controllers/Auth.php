@@ -10,8 +10,39 @@ class Auth extends CI_Controller
 
 	public function index()
 	{
-		$menus = $this->Menu_model->menus();
-		$data = array('menus' => $menus);
-		$this->template->load('template', 'login', $data);
+		$this->load->view('login');
+	}
+
+	public function process()
+	{
+		$post = $this->input->post(null, TRUE);
+		if (isset($post['login'])) {
+			$this->load->model('user_model');
+			$query = $this->user_model->login($post);
+			if ($query->num_rows() > 0) {
+				$row = $query->row();
+				$params = array(
+					'userid' => $row->user_id,
+					'username' => $row->username,
+					'email' => $row->email,
+					'roleid' => $row->role_id,
+					'role' => $row->role,
+					'logged' => TRUE
+				);
+				$this->session->set_userdata($params);
+
+				redirect('dashboard');
+			} else {
+				redirect('auth');
+			}
+		}
+	}
+
+	public function logout()
+	{
+		$params = array('userid', 'level', 'logged');
+		$this->session->unset_userdata($params);
+
+		redirect('auth/login');
 	}
 }

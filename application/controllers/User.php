@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class User extends CI_Controller
 {
 	function __construct()
 	{
@@ -17,5 +17,12 @@ class Dashboard extends CI_Controller
 		$menus = $this->Menu_model->menus();
 		$data = array('menus' => $menus);
 		$this->template->load('template', 'dashboard', $data);
+	}
+
+	public function profile()
+	{
+		$menus = $this->Menu_model->menus();
+		$data = array('menus' => $menus);
+		$this->template->load('template', 'user/profile', $data);
 	}
 }
