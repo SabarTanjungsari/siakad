@@ -42,7 +42,7 @@
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<?php foreach ($menus as $menu) { ?>
+			<?php foreach ($this->session->userdata('menus') as $menu) { ?>
 				<li class="nav-item">
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#id<?= $menu->menu_id ?>" aria-expanded="true" aria-controls="collapseUtilities">
 						<i class="<?= $menu->icon ?>"></i>

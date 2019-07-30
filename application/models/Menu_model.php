@@ -32,4 +32,15 @@ class Menu_model extends CI_Model
 		}
 		return $final;
 	}
+
+	function getmenu_role($role_id, $class)
+	{
+		$this->db->select('count(role_menu.role_id) as count');
+		$this->db->from('role_menu');
+		$this->db->join('menuline', 'menuline.menuline_id = role_menu.menuline_id');
+		$this->db->where('role_menu.role_id', $role_id);
+		$this->db->where('menuline.link', $class);
+		$query = $this->db->get();
+		return $query;
+	}
 }
