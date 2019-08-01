@@ -23,7 +23,9 @@ class Auth extends CI_Controller
 				$row = $query->row();
 				$params = array(
 					'userid' => $row->user_id,
-					'roleid' => $row->role_id
+					'roleid' => $row->role_id,
+					'username' => $row->username,
+					'image' => $row->image
 				);
 				$this->session->set_userdata($params);
 

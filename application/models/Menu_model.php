@@ -18,11 +18,12 @@ class Menu_model extends CI_Model
 			foreach ($q->result() as $row) {
 
 				$this->db->distinct();
-				$this->db->select("*");
+				$this->db->select("menuline.menuline_id as id,*");
 				$this->db->from("menuline");
 				$this->db->join('role_menu', 'role_menu.menuline_id = menuline.menuline_id');
 				$this->db->where('role_id', $this->session->userdata('roleid'));
 				$this->db->where("menu_id", $row->menu_id);
+				$this->db->order_by('id', 'asc');
 				$q = $this->db->get();
 				if ($q->num_rows() > 0) {
 					$row->children = $q->result();
