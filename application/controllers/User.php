@@ -172,7 +172,7 @@ class User extends CI_Controller
 					$post['image'] = null;
 					$this->user_model->edit($post);
 					if ($this->db->affected_rows() > 0) {
-						$this->session->set_flashdata('success', 'Data berhasil disimpan');
+						$this->session->set_flashdata('success', 'Data saved successfully');
 					}
 					redirect('user');
 				}
@@ -183,9 +183,14 @@ class User extends CI_Controller
 
 	public function delete($id)
 	{
+		$user = $this->user_model->get($id)->row();
 		$this->user_model->delete($id);
+
 		if ($this->db->affected_rows() > 0) {
-			$this->session->set_flashdata('success', 'Data successfully deleted');
+			$target_file = './uploads/user/' . $user->image;
+			unlink($target_file);
+
+			$this->session->set_flashdata('success', 'Data deleted successfully');
 		}
 		echo "<script>window.location='" . site_url('user') . "'</script>";
 	}
