@@ -23,11 +23,8 @@ function get_menu()
 {
 	$ci = &get_instance();
 	$ci->load->model('menu_model');
-	//$this->ci->load->model('menu_model');
 
 	$menu_ = $ci->menu_model->menus();
 	$menus = array('menus' => $menu_);
-	//return $menu_data;
 	$ci->session->set_userdata($menus);
-	//$ci->config->set_item('menus', $menu_data);
 }

@@ -60,7 +60,7 @@
 							if (isset($menu->children)) {
 								foreach ($menu->children as $child) {
 									?>
-									<a class="collapse-item" href="<?= $child->link ?>"><i class="<?= $child->icon ?>"></i> <?= $child->name ?></a>
+									<a class="collapse-item" href="<?= base_url() . $child->link ?>"><i class="<?= $child->icon ?>"></i> <?= $child->name ?></a>
 								<?php
 								}
 							}
@@ -234,7 +234,7 @@
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="<?= base_url('user/profile') ?>">
+								<a class="dropdown-item" href="#">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profile
 								</a>
@@ -323,6 +323,8 @@
 	<!-- Page level plugins -->
 	<script src="<?= base_url() ?>assets/vendor/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<script src="<?= base_url() ?>assets/js/siakad.js"></script>
 
 	<script>
 		$(document).ready(function() {

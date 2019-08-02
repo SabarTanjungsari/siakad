@@ -2,6 +2,53 @@
 
 class Menu_model extends CI_Model
 {
+	public function get($id = null)
+	{
+		$this->db->select('*');
+		$this->db->from('menu');
+		if ($id != null) {
+
+			$this->db->where('menu_id', $id);
+		}
+		$query = $this->db->get();
+		return $query;
+	}
+
+	public function add($post)
+	{
+		$params = [
+			'name' => $post['name'],
+			'icon' => $post['icon'],
+			'description' => $post['description'],
+			'link' => $post['link'],
+			'createdby' => $this->session->userdata('userid'),
+			'updatedby' => $this->session->userdata('usetid'),
+		];
+		$this->db->insert('menu', $params);
+	}
+
+	public function edit($post)
+	{
+		$params = [
+			'name' => $post['name'],
+			'icon' => $post['icon'],
+			'description' => $post['description'],
+			'link' => $post['link'],
+			'createdby' => $this->session->userdata('userid'),
+			'updatedby' => $this->session->userdata('userid'),
+			'updated' => date("Y-m-d H:m:s")
+		];
+
+		$this->db->where('menu_id', $post['menu_id']);
+		$this->db->update('menu', $params);
+	}
+
+	public function delete($id)
+	{
+		$this->db->where('menu_id', $id);
+		$this->db->delete('menu');
+	}
+
 	function menus()
 	{
 		$this->db->distinct();
