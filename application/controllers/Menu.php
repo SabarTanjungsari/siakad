@@ -22,7 +22,6 @@ class Menu extends CI_Controller
 		$menu = new stdClass();
 		$menu->menu_id = null;
 		$menu->name = null;
-		$menu->icon = null;
 		$menu->link = null;
 		$menu->description = null;
 
@@ -61,7 +60,6 @@ class Menu extends CI_Controller
 			$this->form_validation->set_rules('name', 'Name', 'trim|required|callback_name_check');
 		}
 
-		$this->form_validation->set_rules('icon', 'Icon', 'trim|required');
 		$this->form_validation->set_rules('description', 'Description', 'trim|required');
 		$this->form_validation->set_message('is_unique', 'This {field} has been used, please replace the other one');
 
@@ -85,7 +83,6 @@ class Menu extends CI_Controller
 				$menu = new stdClass();
 				$menu->menu_id = $this->input->post('menu_id');
 				$menu->name = $this->input->post('name');
-				$menu->icon = $this->input->post('icon');
 				$menu->link = $this->input->post('link');
 				$menu->description = $this->input->post('description');
 

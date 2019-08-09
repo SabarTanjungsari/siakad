@@ -29,22 +29,13 @@
  								<input type="text" name="name" value="<?= $row->name ?>" class="form-control form-control-user <?= form_error('name') ? 'is-invalid' : null ?>" id="name" placeholder="Name">
  								<?= form_error('name') ?>
  							</div>
- 							<div class="col-sm-1">
- 								<button type="button" class="btn btn-facebook btn-circle btn-lg" data-toggle="modal" data-target="#exampleModal">
- 									<i class="fab fa-font-awesome-alt"></i>
- 								</button>
- 							</div>
- 							<div class="col-sm-5">
- 								<input type="text" id="icon" name="icon" value="<?= $row->icon ?>" class="form-control form-control-user <?= form_error('icon') ? 'is-invalid' : null ?>" id="icon" placeholder="Icon">
- 								<?= form_error('icon') ?>
- 							</div>
- 						</div>
- 						<div class="form-group row">
  							<div class="col-sm-6 mb-3 mb-sm-0">
  								<input type="text" name="link" value="<?= $row->link ?>" class="form-control form-control-user <?= form_error('link') ? 'is-invalid' : null ?>" id="link" placeholder="Link">
  								<?= form_error('link') ?>
  							</div>
- 							<div class="col-sm-6">
+ 						</div>
+ 						<div class="form-group row">
+ 							<div class="col-sm">
  								<input type="description" name="description" value="<?= $row->description ?>" class="form-control form-control-user <?= form_error('description') ? 'is-invalid' : null ?>" id="description" placeholder="Description">
  								<?= form_error('description') ?>
  							</div>
@@ -65,35 +56,6 @@
  						<?php echo form_close(); ?>
  					</div>
  				</div>
- 			</div>
- 		</div>
- 	</div>
- </div>
-
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
- 	<div class="modal-dialog" role="document">
- 		<div class="modal-content">
- 			<div class="modal-header">
- 				<h3 class="font-weight-light text-center mt-4 mb-0">Thumbnail Gallery</h3>
- 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
- 					<span aria-hidden="true">&times;</span>
- 				</button>
- 			</div>
- 			<div class="modal-body">
- 				<div class="container">
- 					<div class="row text-center text-lg-left">
- 						<?php foreach ($icons->result() as $key => $icon) { ?>
- 							<div class="col-lg-3 col-md-4 col-6 ">
- 								<button id="setFont" href="#" class="font-awesome btn btn-facebook btn-circle">
- 									<i id="font" class="<?= $icon->name ?>"></i>
- 								</button>
- 							</div>
- 						<?php } ?>
- 					</div>
-
- 				</div>
- 				<!-- /.container -->
  			</div>
  		</div>
  	</div>

@@ -18,7 +18,6 @@ class Menu_model extends CI_Model
 	{
 		$params = [
 			'name' => $post['name'],
-			'icon' => $post['icon'],
 			'description' => $post['description'],
 			'link' => $post['link'],
 			'createdby' => $this->session->userdata('userid'),
@@ -31,7 +30,6 @@ class Menu_model extends CI_Model
 	{
 		$params = [
 			'name' => $post['name'],
-			'icon' => $post['icon'],
 			'description' => $post['description'],
 			'link' => $post['link'],
 			'createdby' => $this->session->userdata('userid'),
